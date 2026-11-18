@@ -1,0 +1,82 @@
+---
+layout: default
+title: Home
+---
+<section class="hero">
+  <div class="container">
+    <p class="eyebrow">New post every week</p>
+    <h1>{{ site.tagline }}</h1>
+    <p class="lead">{{ site.author.bio }}</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="{{ '/weekly/' | relative_url }}">Read the weekly posts</a>
+      <a class="btn btn-ghost" href="{{ '/about/' | relative_url }}">About me</a>
+    </div>
+    <div class="stats">
+      <div><strong>{{ site.posts.size }}</strong><span>weekly posts</span></div>
+      <div><strong>{{ site.data.projects.size }}</strong><span>projects</span></div>
+      {% if site.posts.size > 0 %}
+      <div><strong>{{ site.posts.first.date | date: "%b %-d" }}</strong><span>last updated</span></div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<section class="container section">
+  <div class="section-head">
+    <h2>Latest this week</h2>
+    <a href="{{ '/weekly/' | relative_url }}">See all &rarr;</a>
+  </div>
+
+  {% assign latest = site.posts.first %}
+  {% if latest %}
+  <a class="featured" href="{{ latest.url | relative_url }}">
+    <div class="post-card-meta">
+      {% if latest.week %}<span class="week-badge">Week {{ latest.week }}</span>{% endif %}
+      <time>{{ latest.date | date: "%B %-d, %Y" }}</time>
+    </div>
+    <h3>{{ latest.title }}</h3>
+    <p>{{ latest.summary | default: latest.excerpt | strip_html | truncatewords: 45 }}</p>
+    <span class="read-more">Read post &rarr;</span>
+  </a>
+  {% endif %}
+
+  <div class="card-grid">
+    {% for post in site.posts offset: 1 limit: 3 %}
+      {% include post-card.html post=post %}
+    {% endfor %}
+  </div>
+</section>
+
+<section class="container section">
+  <div class="section-head"><h2>Explore</h2></div>
+  <div class="explore-grid">
+    <a class="explore-card" href="{{ '/weekly/' | relative_url }}">
+      <span class="explore-icon">01</span><h3>Weekly</h3><p>Every weekly post, filterable by topic.</p>
+    </a>
+    <a class="explore-card" href="{{ '/projects/' | relative_url }}">
+      <span class="explore-icon">02</span><h3>Projects</h3><p>What I'm building and what's shipped.</p>
+    </a>
+    <a class="explore-card" href="{{ '/resources/' | relative_url }}">
+      <span class="explore-icon">03</span><h3>Resources</h3><p>Books, courses and tools I recommend.</p>
+    </a>
+    <a class="explore-card" href="{{ '/about/' | relative_url }}">
+      <span class="explore-icon">04</span><h3>About</h3><p>Who I am and why I write this.</p>
+    </a>
+    <a class="explore-card" href="{{ '/contact/' | relative_url }}">
+      <span class="explore-icon">05</span><h3>Contact</h3><p>Get in touch or subscribe.</p>
+    </a>
+  </div>
+</section>
+
+<section class="container section">
+  <div class="subscribe">
+    <div>
+      <h2>Follow along weekly</h2>
+      <p>Subscribe through RSS in any feed reader, or connect with me directly.</p>
+    </div>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="{{ '/feed.xml' | relative_url }}">RSS feed</a>
+      <a class="btn btn-ghost" href="{{ '/contact/' | relative_url }}">Contact</a>
+    </div>
+  </div>
+</section>

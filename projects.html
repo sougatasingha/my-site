@@ -1,0 +1,18 @@
+---
+layout: page
+title: Projects
+subtitle: Things I'm building, have shipped, or am exploring. Edit them in _data/projects.yml.
+permalink: /projects/
+---
+<div class="card-grid">
+  {% for p in site.data.projects %}
+  <article class="project-card">
+    <div class="project-top">
+      <h3>{% if p.link != "" %}<a href="{{ p.link }}" target="_blank" rel="noopener">{{ p.name }}</a>{% else %}{{ p.name }}{% endif %}</h3>
+      <span class="status status-{{ p.status }}">{{ p.status }}</span>
+    </div>
+    <p>{{ p.summary }}</p>
+    <div class="tags">{% for t in p.tags %}<span class="tag">{{ t }}</span>{% endfor %}</div>
+  </article>
+  {% endfor %}
+</div>

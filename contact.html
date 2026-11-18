@@ -1,0 +1,28 @@
+---
+layout: page
+title: Contact
+subtitle: Questions, ideas, or collaboration. I read everything.
+permalink: /contact/
+---
+<div class="contact-grid">
+  <div class="contact-links">
+    <a class="contact-item" href="mailto:{{ site.author.email }}"><small>Email</small>{{ site.author.email }}</a>
+    {% if site.social.linkedin != "" %}<a class="contact-item" href="{{ site.social.linkedin }}" target="_blank" rel="noopener"><small>LinkedIn</small>Connect with me</a>{% endif %}
+    {% if site.social.github != "" %}<a class="contact-item" href="{{ site.social.github }}" target="_blank" rel="noopener"><small>GitHub</small>See my code</a>{% endif %}
+    <a class="contact-item" href="{{ '/feed.xml' | relative_url }}"><small>RSS</small>Subscribe to weekly posts</a>
+  </div>
+
+  {% if site.formspree_id != "" %}
+  <form class="contact-form" action="https://formspree.io/f/{{ site.formspree_id }}" method="POST">
+    <label>Name<input type="text" name="name" required></label>
+    <label>Email<input type="email" name="email" required></label>
+    <label>Message<textarea name="message" rows="6" required></textarea></label>
+    <button class="btn btn-primary" type="submit">Send message</button>
+  </form>
+  {% else %}
+  <div class="contact-form placeholder">
+    <h3>Want a contact form?</h3>
+    <p>Create a free form at formspree.io, then paste its ID into <code>formspree_id</code> in <code>_config.yml</code>. A form will appear here.</p>
+  </div>
+  {% endif %}
+</div>

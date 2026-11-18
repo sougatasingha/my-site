@@ -1,0 +1,57 @@
+# ============================================================
+#  SITE SETTINGS — edit these first
+# ============================================================
+title: "Your Site Name"
+tagline: "Weekly notes on AI, ML systems and engineering"
+description: "A weekly journal of what I'm building, reading and learning."
+
+author:
+  name: "Sougata Singha"
+  email: "sougatasingha@gmail.com"
+  bio: "Engineer building production ML systems. I write one post every week."
+
+# If your repo is named USERNAME.github.io  -> url: "https://USERNAME.github.io", baseurl: ""
+# If your repo is named anything else (e.g. my-site) -> baseurl: "/my-site"
+url: "https://USERNAME.github.io"
+baseurl: ""
+
+social:
+  github: "https://github.com/USERNAME"
+  linkedin: "https://www.linkedin.com/in/USERNAME"
+  twitter: ""        # leave blank to hide
+  rss: true
+
+# Optional: free contact form via https://formspree.io (paste your form ID, or leave blank)
+formspree_id: ""
+
+# ============================================================
+#  BUILD SETTINGS — you normally don't need to touch these
+# ============================================================
+permalink: /weekly/:year/:month/:day/:title/
+markdown: kramdown
+highlighter: rouge
+timezone: Asia/Kolkata
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .github
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: page

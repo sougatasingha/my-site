@@ -1,0 +1,19 @@
+---
+layout: page
+title: Resources
+subtitle: Books, courses and tools I recommend. Edit them in _data/resources.yml.
+permalink: /resources/
+---
+{% for g in site.data.resources %}
+<section class="resource-group">
+  <h2>{{ g.group }}</h2>
+  <ul class="resource-list">
+    {% for r in g.items %}
+    <li>
+      {% if r.link != "" %}<a href="{{ r.link }}" target="_blank" rel="noopener">{{ r.title }}</a>{% else %}<strong>{{ r.title }}</strong>{% endif %}
+      {% if r.note %}<span>{{ r.note }}</span>{% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endfor %}
